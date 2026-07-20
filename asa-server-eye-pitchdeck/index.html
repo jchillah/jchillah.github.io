@@ -6,53 +6,92 @@
   <meta name="description" content="ASA Server Eye Pitchdeck – Flutter Companion-App für offizielle ARK: Survival Ascended Serverdaten, Suche, Favoriten und zukünftige Alerts." />
   <title>ASA Server Eye – Pitchdeck</title>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#06120d;color:#f6fff8;line-height:1.55;overflow:hidden}.deck{height:100vh;width:100vw;position:relative;background:radial-gradient(circle at 85% 12%,rgba(0,255,95,.22),transparent 28%),radial-gradient(circle at 12% 88%,rgba(22,163,74,.2),transparent 30%),linear-gradient(135deg,#06120d,#091a13 58%,#020604)}.slide{width:min(1120px,92vw);height:min(720px,82vh);position:absolute;inset:0;margin:auto;display:none;padding:56px;border:1px solid rgba(0,255,95,.18);border-radius:30px;background:linear-gradient(150deg,rgba(10,24,17,.96),rgba(5,11,8,.94));box-shadow:0 28px 90px rgba(0,0,0,.55);overflow:hidden}.slide.active{display:grid;animation:fade .28s ease-out}@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}.kicker{display:inline-flex;align-items:center;gap:10px;color:#72ff9d;background:rgba(0,255,95,.08);border:1px solid rgba(0,255,95,.24);padding:8px 14px;border-radius:999px;font-weight:800;font-size:15px;letter-spacing:.3px}.title{font-size:clamp(44px,7vw,86px);line-height:.95;letter-spacing:-3px;margin:22px 0}.headline{font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-2px;margin-bottom:18px}.sub{font-size:21px;color:#bde9c9;max-width:780px}.muted{color:#a2c7ac}.green{color:#00ff5f}.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:22px}.card h3{font-size:24px;margin-bottom:10px;color:#72ff9d}.card p,.card li{color:#d7eadc;font-size:17px}.list{display:grid;gap:12px;margin-top:20px}.list li{list-style:none;background:rgba(255,255,255,.045);border-left:4px solid #00ff5f;padding:13px 16px;border-radius:12px;color:#d7eadc}.metric{font-size:42px;font-weight:900;color:#00ff5f;line-height:1}.phone{width:260px;height:520px;border-radius:42px;background:#050a07;border:10px solid #111f16;box-shadow:0 20px 60px rgba(0,0,0,.55);padding:18px;margin:auto}.screen{height:100%;border-radius:28px;background:linear-gradient(180deg,#0b1d13,#071009);padding:18px;border:1px solid rgba(0,255,95,.25);display:flex;flex-direction:column;gap:12px}.bar{height:42px;border-radius:14px;background:linear-gradient(90deg,#00ff5f,#86efac);color:#041008;display:grid;place-items:center;font-weight:900}.row{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px}.row strong{display:block;color:#fff}.row span{color:#9fd9ad;font-size:13px}.arch{display:grid;gap:12px}.layer{border-radius:16px;padding:18px;background:rgba(0,255,95,.07);border:1px solid rgba(0,255,95,.18)}.layer strong{color:#72ff9d;display:block}.nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:5}.btn{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:11px 18px;font-weight:800;cursor:pointer}.btn.primary{background:#00ff5f;color:#06120d}.count{position:fixed;right:28px;top:24px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 14px;color:#c6f6d5;font-weight:800}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.link{display:inline-flex;padding:12px 16px;border-radius:14px;background:#00ff5f;color:#06120d;text-decoration:none;font-weight:900}.link.alt{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}footer{position:absolute;left:56px;bottom:34px;color:#86efac;font-size:14px}.bigicon{font-size:98px;filter:drop-shadow(0 20px 40px rgba(0,255,95,.2))}@media(max-width:850px){body{overflow:auto}.deck{height:auto;min-height:100vh;padding:24px 0}.slide{position:relative;height:auto;min-height:78vh;margin:18px auto;padding:28px}.slide:not(.active){display:none}.grid2,.grid3{grid-template-columns:1fr}.phone{width:220px;height:430px}.nav{position:sticky;bottom:12px}.count{display:none}.title{font-size:46px}.headline{font-size:34px}}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#06120d;color:#f6fff8;line-height:1.55;overflow:hidden}
+    .deck{height:100vh;width:100vw;position:relative;background:radial-gradient(circle at 86% 14%,rgba(0,255,95,.22),transparent 28%),radial-gradient(circle at 12% 88%,rgba(22,163,74,.2),transparent 30%),linear-gradient(135deg,#06120d,#091a13 58%,#020604)}
+    .slide{width:min(1120px,92vw);height:min(720px,82vh);position:absolute;inset:0;margin:auto;display:none!important;padding:56px;border:1px solid rgba(0,255,95,.18);border-radius:30px;background:linear-gradient(150deg,rgba(10,24,17,.96),rgba(5,11,8,.94));box-shadow:0 28px 90px rgba(0,0,0,.55);overflow:hidden}
+    .slide.active{display:grid!important;animation:fade .25s ease-out}
+    .split{grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+    .single{align-content:center}
+    @keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .kicker{display:inline-flex;align-items:center;color:#72ff9d;background:rgba(0,255,95,.08);border:1px solid rgba(0,255,95,.24);padding:8px 14px;border-radius:999px;font-weight:800;font-size:15px;letter-spacing:.3px;width:max-content}
+    .title{font-size:clamp(44px,7vw,82px);line-height:.96;letter-spacing:-3px;margin:22px 0}
+    .headline{font-size:clamp(34px,5vw,58px);line-height:1;letter-spacing:-2px;margin:18px 0}
+    .sub{font-size:21px;color:#bde9c9;max-width:800px}.muted{color:#a2c7ac}.green{color:#00ff5f}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.cards.two{grid-template-columns:repeat(2,1fr)}
+    .card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.11);border-radius:22px;padding:22px}.card h3{font-size:24px;margin-bottom:10px;color:#72ff9d}.card p,.card li{color:#d7eadc;font-size:17px}
+    .list{display:grid;gap:12px;margin-top:20px}.list li{list-style:none;background:rgba(255,255,255,.045);border-left:4px solid #00ff5f;padding:13px 16px;border-radius:12px;color:#d7eadc;font-size:18px}
+    .metric{font-size:42px;font-weight:900;color:#00ff5f;line-height:1}.phone{width:260px;height:520px;border-radius:42px;background:#050a07;border:10px solid #111f16;box-shadow:0 20px 60px rgba(0,0,0,.55);padding:18px;margin:auto}.screen{height:100%;border-radius:28px;background:linear-gradient(180deg,#0b1d13,#071009);padding:18px;border:1px solid rgba(0,255,95,.25);display:flex;flex-direction:column;gap:12px}.bar{height:42px;border-radius:14px;background:linear-gradient(90deg,#00ff5f,#86efac);color:#041008;display:grid;place-items:center;font-weight:900}.row{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:12px}.row strong{display:block;color:#fff}.row span{color:#9fd9ad;font-size:13px}.arch{display:grid;gap:12px}.layer{border-radius:16px;padding:18px;background:rgba(0,255,95,.07);border:1px solid rgba(0,255,95,.18)}.layer strong{color:#72ff9d;display:block}.layer span{color:#a2c7ac}.nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:5}.btn{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:11px 18px;font-weight:800;cursor:pointer}.btn.primary{background:#00ff5f;color:#06120d}.count{position:fixed;right:28px;top:24px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:8px 14px;color:#c6f6d5;font-weight:800}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.link{display:inline-flex;padding:12px 16px;border-radius:14px;background:#00ff5f;color:#06120d;text-decoration:none;font-weight:900}.link.alt{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}footer{position:absolute;left:56px;bottom:34px;color:#86efac;font-size:14px}.bigicon{font-size:96px;filter:drop-shadow(0 20px 40px rgba(0,255,95,.2))}
+    @media(max-width:850px){body{overflow:auto}.deck{height:auto;min-height:100vh;padding:24px 0}.slide{position:relative;height:auto;min-height:78vh;margin:18px auto;padding:28px}.slide:not(.active){display:none!important}.split{grid-template-columns:1fr}.cards,.cards.two{grid-template-columns:1fr}.phone{width:220px;height:430px}.nav{position:sticky;bottom:12px}.count{display:none}.title{font-size:46px}.headline{font-size:34px}}
   </style>
 </head>
 <body>
   <main class="deck">
     <div class="count"><span id="current">1</span>/8</div>
-    <section class="slide active grid2">
+
+    <section class="slide active split">
       <div>
         <span class="kicker">Pitchdeck · ASA Server Eye</span>
         <h1 class="title">ARK-Server schneller finden, prüfen und beobachten.</h1>
-        <p class="sub">ASA Server Eye ist eine veröffentlichte Flutter-App für Spieler von ARK: Survival Ascended. Sie bündelt offizielle Serverdaten, Details und Favoriten in einer klaren mobilen Oberfläche.</p>
+        <p class="sub">ASA Server Eye ist eine veröffentlichte Flutter-App für Spieler von ARK: Survival Ascended. Die App bündelt offizielle Serverdaten, Details und Favoriten in einer mobilen Oberfläche.</p>
         <div class="links"><a class="link" href="https://jchillah.github.io/asa-server-eye/">Projektseite</a><a class="link alt" href="https://github.com/jchillah/asa-server-eye">Repository</a></div>
       </div>
       <div class="phone"><div class="screen"><div class="bar">ASA Server Eye</div><div class="row"><strong>EU-PVE-Official</strong><span>Online · Spieler · Karte</span></div><div class="row"><strong>Favorit gespeichert</strong><span>Schneller Zugriff auf wichtige Server</span></div><div class="row"><strong>Serverdetails</strong><span>Status, Region und Übersicht</span></div></div></div>
       <footer>Jchillah’s Design & Coding Forge · Michael Winkler · Stand 20.07.2026</footer>
     </section>
-    <section class="slide grid2">
-      <div><span class="kicker">Problem</span><h2 class="headline">Serverwahl kostet Zeit und erzeugt Unsicherheit.</h2><p class="sub">ARK-Spieler müssen häufig prüfen, welcher offizielle Server verfügbar, relevant und wiederauffindbar ist. Ohne mobile Übersicht gehen Informationen verloren oder müssen wiederholt gesucht werden.</p></div>
-      <div class="list"><li>Offizielle Serverdaten sind schwer schnell zu vergleichen.</li><li>Favorisierte Server sollen ohne erneute Suche erreichbar sein.</li><li>Serverwechsel, Auslastung und Status brauchen eine kompakte Übersicht.</li><li>Für spätere Alerts und Watchlists wird eine stabile technische Grundlage benötigt.</li></div>
+
+    <section class="slide split">
+      <div><span class="kicker">Problem</span><h2 class="headline">Serverwahl kostet Zeit.</h2><p class="sub">ARK-Spieler müssen häufig prüfen, welcher offizielle Server verfügbar, relevant und wiederauffindbar ist. Ohne mobile Übersicht gehen Informationen verloren oder müssen erneut gesucht werden.</p></div>
+      <ul class="list"><li>Offizielle Serverdaten sind nicht schnell genug vergleichbar.</li><li>Favorisierte Server sollen ohne erneute Suche erreichbar sein.</li><li>Status, Region und Serverdetails brauchen eine kompakte Ansicht.</li><li>Alerts und Watchlists benötigen eine stabile technische Grundlage.</li></ul>
     </section>
-    <section class="slide grid2">
-      <div><span class="kicker">Lösung</span><h2 class="headline">Eine fokussierte Companion-App statt verstreuter Informationen.</h2><p class="sub">ASA Server Eye reduziert die Suche auf die wichtigsten Aktionen: Server finden, Details ansehen, Favoriten speichern und relevante Informationen schneller wiederfinden.</p></div>
-      <div class="grid3" style="grid-template-columns:1fr;gap:14px"><div class="card"><h3>Serverübersicht</h3><p>Offizielle Server werden strukturiert dargestellt und für mobile Nutzung optimiert.</p></div><div class="card"><h3>Details</h3><p>Wichtige Serverinformationen helfen bei der Entscheidung vor dem Login.</p></div><div class="card"><h3>Favoriten</h3><p>Wiederkehrende Server bleiben schnell erreichbar und bilden die Grundlage für zukünftige Watchlists.</p></div></div>
+
+    <section class="slide split">
+      <div><span class="kicker">Lösung</span><h2 class="headline">Eine fokussierte Companion-App.</h2><p class="sub">ASA Server Eye reduziert den Workflow auf die wichtigsten Aktionen: Server finden, Details ansehen, Favoriten speichern und relevante Informationen schneller wiederfinden.</p></div>
+      <div class="cards"><div class="card"><h3>Serverübersicht</h3><p>Offizielle Server werden strukturiert dargestellt und für mobile Nutzung optimiert.</p></div><div class="card"><h3>Details</h3><p>Wichtige Serverinformationen helfen bei der Entscheidung vor dem Login.</p></div><div class="card"><h3>Favoriten</h3><p>Wiederkehrende Server bleiben schnell erreichbar.</p></div></div>
     </section>
-    <section class="slide">
+
+    <section class="slide single">
       <span class="kicker">Produktumfang</span><h2 class="headline">Kernfunktionen im aktuellen Release</h2>
-      <div class="grid3"><div class="card"><div class="metric">01</div><h3>Suche & Filter</h3><p>Server schneller finden und relevante Einträge eingrenzen.</p></div><div class="card"><div class="metric">02</div><h3>Serverdetails</h3><p>Status- und Detailinformationen in einer mobilen Ansicht.</p></div><div class="card"><div class="metric">03</div><h3>Favoriten</h3><p>Wichtige Server markieren und erneut aufrufen.</p></div><div class="card"><div class="metric">04</div><h3>Lokalisierung</h3><p>Mehrsprachige App-Struktur für bessere Nutzbarkeit.</p></div><div class="card"><div class="metric">05</div><h3>Firebase</h3><p>Grundlage für nutzerbezogene App-Funktionen.</p></div><div class="card"><div class="metric">06</div><h3>Support-Seiten</h3><p>Eigene Projekt- und Datenschutzseiten für den Release-Kontext.</p></div></div>
+      <div class="cards"><div class="card"><div class="metric">01</div><h3>Suche & Filter</h3><p>Server schneller finden und relevante Einträge eingrenzen.</p></div><div class="card"><div class="metric">02</div><h3>Serverdetails</h3><p>Status- und Detailinformationen in einer mobilen Ansicht.</p></div><div class="card"><div class="metric">03</div><h3>Favoriten</h3><p>Wichtige Server markieren und erneut aufrufen.</p></div><div class="card"><div class="metric">04</div><h3>Lokalisierung</h3><p>Mehrsprachige App-Struktur für bessere Nutzbarkeit.</p></div><div class="card"><div class="metric">05</div><h3>Firebase</h3><p>Grundlage für nutzerbezogene App-Funktionen.</p></div><div class="card"><div class="metric">06</div><h3>Support-Seiten</h3><p>Eigene Projekt- und Datenschutzseiten für Release-Kontext.</p></div></div>
     </section>
-    <section class="slide grid2">
-      <div><span class="kicker">Technik</span><h2 class="headline">Feature-First Flutter-Architektur.</h2><p class="sub">Die App ist als wartbares Flutter-Projekt aufgebaut: App-Setup, Core-Bausteine und Features sind klar getrennt. Dadurch lassen sich Serverliste, Favoriten, Authentifizierung und Einstellungen gezielt erweitern.</p></div>
-      <div class="arch"><div class="layer"><strong>Presentation</strong><span class="muted">Mobile UI, Serverliste, Detailansichten, Favoriten</span></div><div class="layer"><strong>State & Logic</strong><span class="muted">Riverpod, Feature-State, Validierung, Fehlerzustände</span></div><div class="layer"><strong>Data</strong><span class="muted">Dio, Repository-Struktur, Firebase-Anbindung</span></div><div class="layer"><strong>Infrastructure</strong><span class="muted">GitHub, Support-Seiten, Datenschutz, Release-Vorbereitung</span></div></div>
+
+    <section class="slide split">
+      <div><span class="kicker">Zielgruppe</span><h2 class="headline">Für Spieler, die regelmäßig Server prüfen.</h2><p class="sub">Der Mehrwert entsteht besonders bei wiederkehrenden Servern, Favoriten und späteren Benachrichtigungen. Die App ist als praktisches Werkzeug für den Spielalltag positioniert.</p></div>
+      <div class="cards two"><div class="card"><h3>Spieler</h3><p>Schneller Überblick ohne lange Suche.</p></div><div class="card"><h3>Communities</h3><p>Favorisierte Server können leichter wiedergefunden werden.</p></div><div class="card"><h3>Power User</h3><p>Basis für Alerts, Watchlists und Trenddaten.</p></div><div class="card"><h3>Portfolio</h3><p>Reale Flutter-App mit Release- und Datenschutzkontext.</p></div></div>
     </section>
-    <section class="slide grid2">
-      <div><span class="kicker">Portfolio-Wert</span><h2 class="headline">Vom Projekt zur veröffentlichbaren App.</h2><p class="sub">ASA Server Eye zeigt den vollständigen Weg von einer konkreten Nutzeranforderung über eine Flutter-Codebasis bis zu Release-, Datenschutz- und Projektseiten.</p></div>
-      <ul class="list"><li>Reales Nischenproblem mit klar definierter Zielgruppe</li><li>Veröffentlichte Android-App mit Support-Infrastruktur</li><li>Mobile UX für datengetriebene Serverinformationen</li><li>Technische Grundlage für spätere Premium- und Alert-Funktionen</li></ul>
+
+    <section class="slide split">
+      <div><span class="kicker">Technik</span><h2 class="headline">Feature-First Flutter-Architektur.</h2><p class="sub">App-Setup, Core-Bausteine und Features sind klar getrennt. Dadurch lassen sich Serverliste, Favoriten, Authentifizierung und Einstellungen gezielt erweitern.</p></div>
+      <div class="arch"><div class="layer"><strong>Presentation</strong><span>Mobile UI, Serverliste, Detailansichten, Favoriten</span></div><div class="layer"><strong>State & Logic</strong><span>Riverpod, Feature-State, Validierung, Fehlerzustände</span></div><div class="layer"><strong>Data</strong><span>Dio, Repository-Struktur, Firebase-Anbindung</span></div><div class="layer"><strong>Infrastructure</strong><span>GitHub Pages, Support-Seiten, Datenschutz, Release-Vorbereitung</span></div></div>
     </section>
-    <section class="slide grid2">
+
+    <section class="slide split">
       <div><span class="kicker">Roadmap</span><h2 class="headline">Nächste Ausbaustufen</h2><p class="sub">Die Weiterentwicklung fokussiert sich auf Funktionen, die den Wiederbesuch und den praktischen Nutzen im Spielalltag erhöhen.</p></div>
-      <div class="grid3" style="grid-template-columns:1fr 1fr"><div class="card"><h3>Server Alerts</h3><p>Benachrichtigungen für favorisierte Server und relevante Statusänderungen.</p></div><div class="card"><h3>Watchlists</h3><p>Mehrere Servergruppen für verschiedene Spielziele und Charaktere.</p></div><div class="card"><h3>Trenddaten</h3><p>Bessere Einordnung von Auslastung, Aktivität und Verfügbarkeit.</p></div><div class="card"><h3>Premium-Optionen</h3><p>Erweiterte Alerts und Komfortfunktionen als mögliche Monetarisierung.</p></div></div>
+      <div class="cards two"><div class="card"><h3>Server Alerts</h3><p>Benachrichtigungen für favorisierte Server und relevante Statusänderungen.</p></div><div class="card"><h3>Watchlists</h3><p>Mehrere Servergruppen für verschiedene Spielziele.</p></div><div class="card"><h3>Trenddaten</h3><p>Bessere Einordnung von Auslastung, Aktivität und Verfügbarkeit.</p></div><div class="card"><h3>Premium-Optionen</h3><p>Erweiterte Alerts und Komfortfunktionen als mögliche Monetarisierung.</p></div></div>
     </section>
-    <section class="slide grid2">
-      <div><span class="kicker">Kontakt & Ressourcen</span><h2 class="headline">Bereit für Review, Austausch und Weiterentwicklung.</h2><p class="sub">ASA Server Eye ist Teil des Portfolios von Jchillah’s Design & Coding Forge und dokumentiert Flutter-App-Entwicklung mit realem Release-Kontext.</p><div class="links"><a class="link" href="https://jchillah.github.io/asa-server-eye/">Projektseite öffnen</a><a class="link alt" href="https://github.com/jchillah/asa-server-eye">Code ansehen</a><a class="link alt" href="https://jchillah.github.io/asa-server-eye-privacy-policy/">Datenschutz</a><a class="link alt" href="mailto:jchillah@gmail.com">Kontakt</a></div></div><div class="bigicon">🟢</div>
+
+    <section class="slide split">
+      <div><span class="kicker">Kontakt & Ressourcen</span><h2 class="headline">Bereit für Review und Weiterentwicklung.</h2><p class="sub">ASA Server Eye dokumentiert Flutter-App-Entwicklung mit realem Release-Kontext, Projektseite, Datenschutzerklärung und öffentlichem Repository.</p><div class="links"><a class="link" href="https://jchillah.github.io/asa-server-eye/">Projektseite öffnen</a><a class="link alt" href="https://github.com/jchillah/asa-server-eye">Code ansehen</a><a class="link alt" href="https://jchillah.github.io/asa-server-eye-privacy-policy/">Datenschutz</a><a class="link alt" href="mailto:jchillah@gmail.com">Kontakt</a></div></div><div class="bigicon">🟢</div>
     </section>
+
     <nav class="nav"><button class="btn" onclick="prev()">Zurück</button><button class="btn primary" onclick="next()">Weiter</button></nav>
   </main>
   <script>
-    const slides=[...document.querySelectorAll('.slide')];let i=0;const current=document.getElementById('current');function show(n){slides[i].classList.remove('active');i=(n+slides.length)%slides.length;slides[i].classList.add('active');current.textContent=i+1}function next(){show(i+1)}function prev(){show(i-1)}document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev();});
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    let index = 0;
+    const current = document.getElementById('current');
+    function showSlide(nextIndex){
+      index = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => slide.classList.toggle('active', slideIndex === index));
+      current.textContent = String(index + 1);
+    }
+    function next(){ showSlide(index + 1); }
+    function prev(){ showSlide(index - 1); }
+    document.addEventListener('keydown', event => {
+      if(event.key === 'ArrowRight' || event.key === ' ') next();
+      if(event.key === 'ArrowLeft') prev();
+    });
+    showSlide(0);
   </script>
 </body>
 </html>
