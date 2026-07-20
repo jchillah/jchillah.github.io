@@ -3,458 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ASA Server Eye ist eine Companion-App zum Beobachten offizieller ARK: Survival Ascended Server mit Favoriten und Server-Übersicht." />
-  <title>ASA Server Eye | Official ARK Server Tracker</title>
-
+  <meta name="description" content="Jchillah’s Design & Coding Forge entwickelt individuelle Apps, Websites und digitale Softwarelösungen für Unternehmen, Selbstständige und Start-ups." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Jchillah’s Design & Coding Forge | App- & Webentwicklung</title>
   <style>
-    :root {
-      --bg: #050805;
-      --card: #0d140d;
-      --card-soft: #101c10;
-      --text: #f2fff2;
-      --muted: #a7b8a7;
-      --accent: #7dff6b;
-      --accent-soft: rgba(125, 255, 107, 0.16);
-      --border: rgba(125, 255, 107, 0.22);
-      --shadow: rgba(125, 255, 107, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top right, rgba(125, 255, 107, 0.16), transparent 34%),
-        radial-gradient(circle at bottom left, rgba(125, 255, 107, 0.08), transparent 30%),
-        var(--bg);
-      min-height: 100vh;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-      padding: 32px 0;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 18px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-    }
-
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      color: #031003;
-      background: linear-gradient(135deg, var(--accent), #b8ffae);
-      box-shadow: 0 0 30px var(--shadow);
-      font-weight: 900;
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
-      align-items: center;
-      padding: 72px 0 48px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      background: var(--accent-soft);
-      color: var(--accent);
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(42px, 7vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -2.4px;
-    }
-
-    .highlight {
-      color: var(--accent);
-    }
-
-    .hero-text {
-      margin: 24px 0 0;
-      max-width: 660px;
-      color: var(--muted);
-      font-size: 19px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 14px;
-      font-weight: 800;
-      border: 1px solid var(--border);
-    }
-
-    .button.primary {
-      color: #031003;
-      background: var(--accent);
-      box-shadow: 0 0 26px var(--shadow);
-    }
-
-    .button.secondary {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-    }
-
-    .preview {
-      border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(125, 255, 107, 0.11), rgba(255, 255, 255, 0.03));
-      border-radius: 30px;
-      padding: 22px;
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
-    }
-
-    .phone {
-      border: 1px solid rgba(255,255,255,0.08);
-      background: #060b06;
-      border-radius: 26px;
-      padding: 18px;
-    }
-
-    .phone-header {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    .server-card {
-      background: var(--card);
-      border: 1px solid rgba(125, 255, 107, 0.14);
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 12px;
-    }
-
-    .server-card strong {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .server-meta {
-      display: flex;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .online {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .section {
-      padding: 42px 0;
-    }
-
-    .section h2 {
-      font-size: clamp(28px, 4vw, 42px);
-      margin: 0 0 16px;
-      letter-spacing: -1px;
-    }
-
-    .section p {
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0;
-      font-size: 17px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .card {
-      background: rgba(13, 20, 13, 0.78);
-      border: 1px solid rgba(125, 255, 107, 0.14);
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: var(--text);
-      font-size: 19px;
-    }
-
-    .card p {
-      font-size: 15px;
-    }
-
-    .status {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .status-item {
-      background: var(--card-soft);
-      border: 1px solid rgba(125, 255, 107, 0.13);
-      border-radius: 18px;
-      padding: 18px;
-    }
-
-    .status-item span {
-      display: block;
-      color: var(--accent);
-      font-weight: 900;
-      font-size: 24px;
-    }
-
-    .status-item small {
-      color: var(--muted);
-    }
-
-    footer {
-      border-top: 1px solid rgba(125, 255, 107, 0.12);
-      margin-top: 48px;
-      padding: 26px 0;
-      color: var(--muted);
-      font-size: 14px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    footer a {
-      color: var(--muted);
-    }
-
-    footer a:hover {
-      color: var(--accent);
-    }
-
-    @media (max-width: 820px) {
-      header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      nav {
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 48px;
-      }
-
-      .grid,
-      .status {
-        grid-template-columns: 1fr;
-      }
-    }
+    :root{--bg:#070b16;--surface:#0e1528;--surface2:#131d35;--text:#f6f8ff;--muted:#aab5cc;--accent:#67e8f9;--accent2:#8b5cf6;--border:rgba(255,255,255,.11);--shadow:0 24px 70px rgba(0,0,0,.34)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 85% 5%,rgba(139,92,246,.24),transparent 28%),radial-gradient(circle at 10% 25%,rgba(103,232,249,.12),transparent 25%),var(--bg);line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0}.brand{display:flex;align-items:center;gap:12px;font-weight:850}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07101d;font-weight:950;box-shadow:0 0 30px rgba(103,232,249,.2)}nav{display:flex;gap:20px;color:var(--muted);font-size:14px}nav a:hover{color:var(--accent)}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center;padding:78px 0 68px}.eyebrow{display:inline-flex;padding:7px 12px;border:1px solid rgba(103,232,249,.28);border-radius:999px;background:rgba(103,232,249,.08);color:var(--accent);font-weight:750;font-size:14px}h1{font-size:clamp(44px,7vw,82px);line-height:.98;letter-spacing:-3px;margin:24px 0}.gradient{background:linear-gradient(90deg,var(--accent),#c4b5fd);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:20px;color:var(--muted);max-width:720px}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}.btn{min-height:50px;padding:0 20px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;border:1px solid var(--border)}.btn.primary{background:linear-gradient(135deg,var(--accent),#a78bfa);color:#07101d}.btn.secondary{background:rgba(255,255,255,.04)}.panel{background:linear-gradient(160deg,rgba(103,232,249,.1),rgba(139,92,246,.08));border:1px solid var(--border);border-radius:28px;padding:24px;box-shadow:var(--shadow)}.panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.mini{background:rgba(7,11,22,.72);border:1px solid var(--border);border-radius:18px;padding:18px}.mini strong{display:block;font-size:18px}.mini span{color:var(--muted);font-size:14px}.section{padding:64px 0}.section h2{font-size:clamp(30px,4vw,46px);letter-spacing:-1.4px;margin:0 0 14px}.section-intro{max-width:760px;color:var(--muted);font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.card{background:rgba(14,21,40,.82);border:1px solid var(--border);border-radius:22px;padding:24px}.card h3{margin:0 0 10px}.card p{margin:0;color:var(--muted)}.taglist{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.tag{padding:8px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.035);color:#dce5f6;font-size:14px}.project{display:flex;flex-direction:column;justify-content:space-between;min-height:220px}.project-link{color:var(--accent);font-weight:800;margin-top:22px}.contact{padding:36px;border-radius:28px;background:linear-gradient(135deg,rgba(103,232,249,.13),rgba(139,92,246,.14));border:1px solid var(--border)}footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);border-top:1px solid var(--border);padding:28px 0 38px;margin-top:34px;font-size:14px}@media(max-width:850px){nav{display:none}.hero{grid-template-columns:1fr;padding-top:44px}.grid{grid-template-columns:1fr}.panel-grid{grid-template-columns:1fr}h1{letter-spacing:-2px}}
   </style>
 </head>
-
 <body>
-  <main class="page">
-    <header>
-      <a class="brand" href="/">
-        <div class="logo">A</div>
-        <span>ASA Server Eye</span>
-      </a>
+  <header class="wrap nav">
+    <a class="brand" href="/" aria-label="Startseite"><span class="logo">JC</span><span>Jchillah’s Design & Coding Forge</span></a>
+    <nav aria-label="Hauptnavigation"><a href="#leistungen">Leistungen</a><a href="#projekte">Projekte</a><a href="#technologien">Technologien</a><a href="#kontakt">Kontakt</a></nav>
+  </header>
 
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#support">Support</a>
-        <a href="/app-ads.txt">app-ads.txt</a>
-      </nav>
-    </header>
-
-    <section class="hero">
+  <main>
+    <section class="wrap hero">
       <div>
-        <div class="badge">ARK: Survival Ascended Server Tracker</div>
-
-        <h1>
-          Track official ASA servers with
-          <span class="highlight">clear server intelligence.</span>
-        </h1>
-
-        <p class="hero-text">
-          ASA Server Eye helps players monitor official ARK: Survival Ascended servers,
-          check population data, save favorite servers and stay prepared before joining the game.
-        </p>
-
-        <div class="actions">
-          <a class="button primary" href="#features">Explore Features</a>
-          <a class="button secondary" href="#support">Contact Support</a>
-        </div>
+        <span class="eyebrow">App-, Web- und Softwareentwicklung</span>
+        <h1>Digitale Ideen werden zu <span class="gradient">funktionierenden Produkten.</span></h1>
+        <p class="lead">Jchillah’s Design & Coding Forge entwickelt individuelle mobile Apps, Websites und digitale Softwarelösungen – von der Konzeption und Gestaltung bis zur technischen Umsetzung.</p>
+        <div class="actions"><a class="btn primary" href="mailto:Michael.Winkler.Developer@gmail.com">Projekt anfragen</a><a class="btn secondary" href="#projekte">Projekte ansehen</a></div>
       </div>
-
-      <div class="preview" aria-label="App preview">
-        <div class="phone">
-          <div class="phone-header">
-            <span>Official Servers</span>
-            <span class="online">Live</span>
-          </div>
-
-          <div class="server-card">
-            <strong>TheIsland PvE Official</strong>
-            <div class="server-meta">
-              <span>The Island</span>
-              <span>42 / 70</span>
-            </div>
-          </div>
-
-          <div class="server-card">
-            <strong>ScorchedEarth PvP Official</strong>
-            <div class="server-meta">
-              <span>Scorched Earth</span>
-              <span>18 / 70</span>
-            </div>
-          </div>
-
-          <div class="server-card">
-            <strong>Ragnarok Official</strong>
-            <div class="server-meta">
-              <span>Ragnarok</span>
-              <span>0 / 70</span>
-            </div>
-          </div>
+      <aside class="panel" aria-label="Leistungsübersicht">
+        <div class="panel-grid">
+          <div class="mini"><strong>Mobile Apps</strong><span>Flutter, Android und iOS</span></div>
+          <div class="mini"><strong>Websites</strong><span>Responsive und benutzerfreundlich</span></div>
+          <div class="mini"><strong>UX/UI</strong><span>Klare Abläufe und moderne Interfaces</span></div>
+          <div class="mini"><strong>Backend</strong><span>APIs, Firebase und Datenbanken</span></div>
         </div>
-      </div>
+      </aside>
     </section>
 
-    <section id="features" class="section">
-      <h2>Built for survivors who want faster decisions.</h2>
-      <p>
-        The app focuses on simple, useful server information without unnecessary complexity.
-      </p>
-
+    <section id="leistungen" class="wrap section">
+      <h2>Leistungen</h2>
+      <p class="section-intro">Praktische digitale Lösungen für Selbstständige, kleine Unternehmen, Start-ups und individuelle Produktideen.</p>
       <div class="grid">
-        <article class="card">
-          <h3>Official server overview</h3>
-          <p>
-            Browse official ARK: Survival Ascended servers and quickly compare important server data.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Favorites</h3>
-          <p>
-            Save your most important servers and access them faster from a dedicated favorites area.
-          </p>
-        </article>
-
-        <article class="card">
-          <h3>Population awareness</h3>
-          <p>
-            Check player population at a glance before joining a server or planning your next session.
-          </p>
-        </article>
+        <article class="card"><h3>App-Entwicklung</h3><p>Konzeption und Entwicklung moderner Apps für Android, iOS und mehrere Plattformen mit wartbarer Architektur.</p></article>
+        <article class="card"><h3>Webentwicklung</h3><p>Responsive Unternehmensseiten, Landingpages und Webanwendungen mit klarer Nutzerführung.</p></article>
+        <article class="card"><h3>Produktentwicklung</h3><p>Unterstützung von der ersten Idee über MVP, Architektur und Tests bis zur Veröffentlichung.</p></article>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <h2>Developed by Jchillah Coding Forge.</h2>
-      <p>
-        ASA Server Eye is developed by Michael Winkler under the Jchillah Coding Forge brand.
-        The goal is to build practical tools for gamers, creators and independent users with a clean,
-        reliable and mobile-first experience.
-      </p>
-
-      <div class="status">
-        <div class="status-item">
-          <span>Android</span>
-          <small>Available platform</small>
-        </div>
-
-        <div class="status-item">
-          <span>ASA</span>
-          <small>Focused on ARK: Survival Ascended</small>
-        </div>
-
-        <div class="status-item">
-          <span>Live Data</span>
-          <small>Designed around server status insights</small>
-        </div>
+    <section id="projekte" class="wrap section">
+      <h2>Ausgewählte Projekte</h2>
+      <p class="section-intro">Eigene Produkte und Referenzprojekte aus Mobile-, Web- und Softwareentwicklung.</p>
+      <div class="grid">
+        <article class="card project"><div><h3>ASA Server Eye</h3><p>Companion-App zur Übersicht offizieller ARK: Survival Ascended Server mit Favoriten und Serverinformationen.</p></div><a class="project-link" href="/asa-server-eye/">Projektseite öffnen →</a></article>
+        <article class="card project"><div><h3>GameRadar</h3><p>Android-App zur Spielesuche und Verwaltung von Favoriten und Wunschlisten mit Offline-Funktionen.</p></div><a class="project-link" href="https://github.com/jchillah/GameRadar">GitHub öffnen →</a></article>
+        <article class="card project"><div><h3>CryptoTracker</h3><p>SwiftUI-App zur übersichtlichen Darstellung von Kryptowährungsdaten mit MVVM-Architektur.</p></div><a class="project-link" href="https://github.com/jchillah/CryptoTracker">GitHub öffnen →</a></article>
       </div>
     </section>
 
-    <section id="support" class="section">
-      <h2>Support & legal</h2>
-      <p>
-        For support, feedback or questions about ASA Server Eye, please contact the developer.
-      </p>
-
-      <div class="actions">
-        <a class="button primary" href="mailto:jchillah@gmail.com">Contact Support</a>
-        <a class="button secondary" href="/app-ads.txt">View app-ads.txt</a>
-      </div>
+    <section id="technologien" class="wrap section">
+      <h2>Technologien</h2>
+      <p class="section-intro">Der Technologie-Stack wird passend zum Projekt gewählt – nicht umgekehrt.</p>
+      <div class="taglist"><span class="tag">Flutter & Dart</span><span class="tag">Kotlin & Jetpack Compose</span><span class="tag">Swift & SwiftUI</span><span class="tag">HTML, CSS & TypeScript</span><span class="tag">Firebase</span><span class="tag">REST APIs</span><span class="tag">GitHub Actions</span><span class="tag">MVVM & Clean Architecture</span></div>
     </section>
 
-    <footer>
-      <span>© 2026 Jchillah Coding Forge. All rights reserved.</span>
-      <span>
-        ASA Server Eye is an independent companion app and is not affiliated with Studio Wildcard.
-      </span>
-    </footer>
+    <section id="kontakt" class="wrap section">
+      <div class="contact"><h2>Eine App oder Website geplant?</h2><p class="section-intro">Beschreiben Sie kurz Ihre Idee, das gewünschte Ziel und den geplanten Funktionsumfang.</p><div class="actions"><a class="btn primary" href="mailto:Michael.Winkler.Developer@gmail.com">E-Mail schreiben</a><a class="btn secondary" href="https://github.com/jchillah">GitHub-Profil</a></div></div>
+    </section>
   </main>
+
+  <footer class="wrap"><span>© 2026 Jchillah’s Design & Coding Forge · Michael Winkler</span><span><a href="/app-ads.txt">app-ads.txt</a></span></footer>
 </body>
 </html>
