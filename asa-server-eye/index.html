@@ -3,61 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ASA Server Eye ist eine Companion-App zum Beobachten offizieller ARK: Survival Ascended Server mit Favoriten und Serverübersicht." />
+  <meta name="description" content="ASA Server Eye ist eine Flutter-Companion-App für offizielle ARK: Survival Ascended Server mit Suche, Detailansichten, Favoriten und Player Sightings." />
   <meta name="theme-color" content="#050805" />
-  <title>ASA Server Eye | Official ARK Server Tracker</title>
+  <meta property="og:title" content="ASA Server Eye | Projekt von Jchillah’s Design & Coding Forge" />
+  <meta property="og:description" content="Flutter-App für ARK: Survival Ascended Server Discovery, Details, Favoriten und Player Sightings." />
+  <meta property="og:image" content="https://jchillah.github.io/assets/showcases/asa-server-eye-showcase.webp" />
+  <title>ASA Server Eye | Flutter ARK Server Companion</title>
   <style>
-    :root{--bg:#050805;--card:#0d140d;--soft:#101c10;--text:#f2fff2;--muted:#a7b8a7;--accent:#7dff6b;--border:rgba(125,255,107,.22)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:radial-gradient(circle at top right,rgba(125,255,107,.16),transparent 34%),radial-gradient(circle at bottom left,rgba(125,255,107,.08),transparent 30%),var(--bg);min-height:100vh;line-height:1.6}a{color:inherit;text-decoration:none}.page{width:min(1120px,92%);margin:auto;padding:30px 0}header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0}.brand{display:flex;align-items:center;gap:12px;font-weight:800}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#031003;background:linear-gradient(135deg,var(--accent),#b8ffae);font-weight:900}nav{display:flex;gap:18px;color:var(--muted);font-size:14px}nav a:hover{color:var(--accent)}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;padding:70px 0 48px}.badge{display:inline-flex;padding:8px 12px;border:1px solid var(--border);background:rgba(125,255,107,.1);color:var(--accent);border-radius:999px;font-size:14px;font-weight:700}h1{margin:22px 0;font-size:clamp(42px,7vw,78px);line-height:.98;letter-spacing:-2.4px}.highlight{color:var(--accent)}.hero p,.section p{color:var(--muted);font-size:18px}.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}.button{min-height:48px;padding:0 20px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;border:1px solid var(--border)}.primary{color:#031003;background:var(--accent)}.secondary{background:rgba(255,255,255,.03)}.preview{border:1px solid var(--border);background:linear-gradient(180deg,rgba(125,255,107,.11),rgba(255,255,255,.03));border-radius:30px;padding:22px}.phone{border:1px solid rgba(255,255,255,.08);background:#060b06;border-radius:26px;padding:18px}.phone-header,.server-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}.online{color:var(--accent);font-weight:800}.server-card{background:var(--card);border:1px solid rgba(125,255,107,.14);border-radius:18px;padding:16px;margin-top:12px}.server-card strong{display:block;margin-bottom:6px}.section{padding:44px 0}.section h2{font-size:clamp(28px,4vw,42px);margin:0 0 14px}.grid,.status{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}.card,.status-item{background:rgba(13,20,13,.8);border:1px solid rgba(125,255,107,.14);border-radius:22px;padding:22px}.card h3{margin:0 0 10px}.card p{font-size:15px;margin:0}.status-item span{display:block;color:var(--accent);font-weight:900;font-size:23px}.status-item small{color:var(--muted)}footer{border-top:1px solid rgba(125,255,107,.12);margin-top:48px;padding:26px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}@media(max-width:820px){header{align-items:flex-start;flex-direction:column}nav{flex-wrap:wrap}.hero{grid-template-columns:1fr;padding-top:46px}.grid,.status{grid-template-columns:1fr}}
+    :root{--bg:#050805;--card:#0d140d;--soft:#101c10;--text:#f2fff2;--muted:#a7b8a7;--accent:#7dff3d;--border:rgba(125,255,61,.23)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text);background:radial-gradient(circle at 82% 2%,rgba(125,255,61,.15),transparent 34%),radial-gradient(circle at 12% 72%,rgba(125,255,61,.07),transparent 30%),var(--bg);min-height:100vh;line-height:1.6}a{color:inherit;text-decoration:none}.page{width:min(1180px,92%);margin:auto;padding:24px 0 36px}header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:16px 0}.brand{display:flex;align-items:center;gap:12px;font-weight:850}.brand img{width:48px;height:48px;border-radius:14px;object-fit:cover;box-shadow:0 0 22px rgba(125,255,61,.25)}nav{display:flex;gap:18px;color:var(--muted);font-size:14px;flex-wrap:wrap}nav a:hover{color:var(--accent)}.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:42px;align-items:center;padding:72px 0 42px}.badge{display:inline-flex;padding:8px 12px;border:1px solid var(--border);background:rgba(125,255,61,.09);color:var(--accent);border-radius:999px;font-size:14px;font-weight:750}h1{margin:22px 0;font-size:clamp(44px,7vw,78px);line-height:.98;letter-spacing:-2.5px}.highlight{color:var(--accent)}.hero p,.section>p{color:var(--muted);font-size:18px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{min-height:48px;padding:0 20px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;border:1px solid var(--border);transition:transform .18s ease,background .18s ease}.button:hover{transform:translateY(-2px)}.primary{color:#031003;background:var(--accent)}.secondary{background:rgba(255,255,255,.035)}.hero-card{padding:24px;border:1px solid var(--border);border-radius:28px;background:linear-gradient(180deg,rgba(125,255,61,.1),rgba(255,255,255,.025));box-shadow:0 24px 60px rgba(0,0,0,.3)}.hero-card h2{font-size:24px;margin:0 0 12px}.quick-list{display:grid;gap:10px;margin-top:18px}.quick-item{display:flex;justify-content:space-between;gap:16px;padding:14px;border-radius:15px;background:var(--card);border:1px solid rgba(125,255,61,.13)}.quick-item span:last-child{color:var(--accent);font-weight:800}.section{padding:46px 0}.section h2{font-size:clamp(30px,4vw,44px);margin:0 0 14px}.showcase-wrap{margin-top:24px;padding:10px;border-radius:26px;background:linear-gradient(135deg,rgba(125,255,61,.26),rgba(255,255,255,.04));border:1px solid var(--border);box-shadow:0 28px 70px rgba(0,0,0,.34)}.showcase-wrap a{display:block}.showcase-wrap img{display:block;width:100%;height:auto;border-radius:19px}.caption{margin:13px 8px 4px;color:var(--muted);font-size:14px}.grid,.status{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}.card,.status-item{background:rgba(13,20,13,.82);border:1px solid rgba(125,255,61,.14);border-radius:22px;padding:22px}.card h3{margin:0 0 10px}.card p{font-size:15px;margin:0;color:var(--muted)}.status-item span{display:block;color:var(--accent);font-weight:900;font-size:23px}.status-item small{color:var(--muted)}.legal-note{padding:18px 20px;border-radius:18px;border-left:4px solid var(--accent);background:rgba(125,255,61,.07);color:var(--muted)}footer{border-top:1px solid rgba(125,255,61,.12);margin-top:48px;padding:26px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}@media(max-width:840px){header{align-items:flex-start;flex-direction:column}.hero{grid-template-columns:1fr;padding-top:46px}.grid,.status{grid-template-columns:1fr}.showcase-wrap{border-radius:18px;padding:6px}.showcase-wrap img{border-radius:13px}}@media(max-width:520px){.page{width:min(94%,1180px)}h1{letter-spacing:-1.6px}.actions .button{width:100%}}
   </style>
 </head>
 <body>
   <main class="page">
     <header>
-      <a class="brand" href="/asa-server-eye/"><span class="logo">A</span><span>ASA Server Eye</span></a>
-      <nav><a href="#features">Features</a><a href="#about">Über die App</a><a href="#support">Support</a><a href="/">Coding Forge</a></nav>
+      <a class="brand" href="/asa-server-eye/"><img src="https://raw.githubusercontent.com/jchillah/asa-server-eye/main/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="ASA Server Eye App-Logo"><span>ASA Server Eye</span></a>
+      <nav><a href="#showcase">App-Showcase</a><a href="#features">Funktionen</a><a href="#about">Projekt</a><a href="#support">Links & Support</a><a href="/">Coding Forge</a></nav>
     </header>
 
     <section class="hero">
       <div>
-        <span class="badge">ARK: Survival Ascended Server Tracker</span>
-        <h1>Track official ASA servers with <span class="highlight">clear server intelligence.</span></h1>
-        <p>ASA Server Eye hilft Spielern dabei, offizielle ARK: Survival Ascended Server zu beobachten, Spielerzahlen zu prüfen und wichtige Server als Favoriten zu speichern.</p>
-        <div class="actions"><a class="button primary" href="#features">Features ansehen</a><a class="button secondary" href="#support">Support kontaktieren</a></div>
-      </div>
-      <div class="preview" aria-label="App-Vorschau">
-        <div class="phone">
-          <div class="phone-header"><span>Official Servers</span><span class="online">Live</span></div>
-          <div class="server-card"><strong>TheIsland PvE Official</strong><div class="server-meta"><span>The Island</span><span>42 / 70</span></div></div>
-          <div class="server-card"><strong>ScorchedEarth PvP Official</strong><div class="server-meta"><span>Scorched Earth</span><span>18 / 70</span></div></div>
-          <div class="server-card"><strong>Ragnarok Official</strong><div class="server-meta"><span>Ragnarok</span><span>0 / 70</span></div></div>
+        <span class="badge">Flutter Companion-App für ARK: Survival Ascended</span>
+        <h1>Server finden, prüfen und mit <span class="highlight">klaren Daten verfolgen.</span></h1>
+        <p>ASA Server Eye bündelt die Suche nach offiziellen Servern, Serverdetails, Favoriten und Player Sightings in einer fokussierten mobilen Anwendung.</p>
+        <div class="actions">
+          <a class="button primary" href="#showcase">App ansehen</a>
+          <a class="button secondary" href="/asa-server-eye-pitchdeck/">Pitchdeck öffnen</a>
+          <a class="button secondary" href="https://github.com/jchillah/asa-server-eye">GitHub-Repository</a>
         </div>
       </div>
+      <aside class="hero-card" aria-label="Projektüberblick">
+        <h2>Projektüberblick</h2>
+        <p>Release-orientierte Flutter-App mit Feature-First-Struktur, Riverpod, Dio, Firebase-Anbindung, Lokalisierung sowie separater Support- und Datenschutz-Infrastruktur.</p>
+        <div class="quick-list">
+          <div class="quick-item"><span>Plattform</span><span>Android</span></div>
+          <div class="quick-item"><span>Framework</span><span>Flutter</span></div>
+          <div class="quick-item"><span>Status</span><span>Aktive Entwicklung</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="showcase" class="section">
+      <h2>Die App in der Anwendung.</h2>
+      <p>Die Übersicht zeigt echte Projektansichten für Anmeldung, Server Discovery, Serverdetails und Einstellungen.</p>
+      <figure class="showcase-wrap">
+        <a href="/assets/showcases/asa-server-eye-showcase.webp" target="_blank" rel="noopener" aria-label="ASA Server Eye Showcase in voller Größe öffnen">
+          <img src="/assets/showcases/asa-server-eye-showcase.webp" alt="ASA Server Eye App-Showcase mit Anmeldung, Serverliste, Serverdetails und Einstellungen" width="960" height="640" loading="eager">
+        </a>
+        <figcaption class="caption">Zum Vergrößern anklicken. Die gezeigten Oberflächen basieren auf Screenshots aus dem Projekt.</figcaption>
+      </figure>
     </section>
 
     <section id="features" class="section">
-      <h2>Für schnellere Entscheidungen vor dem Spielstart.</h2>
-      <p>Die App konzentriert sich auf übersichtliche und nützliche Serverinformationen ohne unnötige Komplexität.</p>
+      <h2>Auf die wichtigsten Abläufe konzentriert.</h2>
+      <p>Die App reduziert die Serverauswahl auf Informationen und Aktionen, die vor und während einer Spielsitzung relevant sind.</p>
       <div class="grid">
-        <article class="card"><h3>Serverübersicht</h3><p>Offizielle ASA-Server durchsuchen und wichtige Serverdaten schnell vergleichen.</p></article>
-        <article class="card"><h3>Favoriten</h3><p>Wichtige Server speichern und über einen eigenen Favoritenbereich schneller öffnen.</p></article>
-        <article class="card"><h3>Spielerzahlen</h3><p>Die aktuelle Auslastung eines Servers auf einen Blick prüfen.</p></article>
+        <article class="card"><h3>Server Discovery</h3><p>Offizielle Server und Karten durchsuchen und zentrale Angaben direkt vergleichen.</p></article>
+        <article class="card"><h3>Serverdetails & Favoriten</h3><p>Karte, Auslastung und offiziellen Status prüfen sowie häufig genutzte Server speichern.</p></article>
+        <article class="card"><h3>Player Sightings</h3><p>Sichtungen zu einem Server aufrufen und neue Beobachtungen strukturiert melden.</p></article>
       </div>
     </section>
 
     <section id="about" class="section">
       <h2>Entwickelt von Jchillah’s Design & Coding Forge.</h2>
-      <p>ASA Server Eye wird von Michael Winkler entwickelt. Ziel ist eine zuverlässige, mobile und einfach bedienbare Companion-App für ARK-Spieler.</p>
-      <div class="status"><div class="status-item"><span>Android</span><small>Zielplattform</small></div><div class="status-item"><span>ASA</span><small>ARK: Survival Ascended</small></div><div class="status-item"><span>Live Data</span><small>Serverstatus und Auslastung</small></div></div>
+      <p>ASA Server Eye ist ein eigenständig entwickeltes Produkt von Michael Winkler. Das Projekt verbindet App-Entwicklung, Datenintegration, Release-Vorbereitung und rechtliche Produktseiten.</p>
+      <div class="status">
+        <div class="status-item"><span>Flutter</span><small>Cross-Platform-Framework</small></div>
+        <div class="status-item"><span>Riverpod</span><small>Zustandsverwaltung</small></div>
+        <div class="status-item"><span>Dio + Firebase</span><small>Netzwerk und App-Dienste</small></div>
+      </div>
     </section>
 
     <section id="support" class="section">
-      <h2>Support & rechtliche Hinweise</h2>
-      <p>Für Support, Feedback oder Fragen zur App können Sie den Entwickler direkt kontaktieren.</p>
-      <div class="actions"><a class="button primary" href="mailto:Michael.Winkler.Developer@gmail.com">Support kontaktieren</a><a class="button secondary" href="/app-ads.txt">app-ads.txt</a></div>
+      <h2>Projektlinks und Support</h2>
+      <div class="actions">
+        <a class="button primary" href="mailto:asa.server.eye@gmail.com">Support kontaktieren</a>
+        <a class="button secondary" href="/asa-server-eye-pitchdeck/">Pitchdeck</a>
+        <a class="button secondary" href="https://github.com/jchillah/asa-server-eye">Quellcode</a>
+        <a class="button secondary" href="/asa-server-eye-privacy-policy/">Datenschutzerklärung</a>
+        <a class="button secondary" href="/app-ads.txt">app-ads.txt</a>
+      </div>
+      <p class="legal-note">ASA Server Eye ist eine unabhängige Companion-App und weder mit Studio Wildcard noch mit Snail Games verbunden oder von diesen unterstützt.</p>
     </section>
 
-    <footer><span>© 2026 Jchillah’s Design & Coding Forge.</span><span>ASA Server Eye ist eine unabhängige Companion-App und nicht mit Studio Wildcard verbunden.</span></footer>
+    <footer><span>© 2026 Jchillah’s Design & Coding Forge.</span><span>Konzeption und Entwicklung: Michael Winkler</span></footer>
   </main>
 </body>
 </html>
